@@ -63,17 +63,16 @@ def _maybe_format_reranker_inputs(
     # Default values for Qwen3-Reranker (from
     # examples/pooling/score/offline_reranker.py).
     default_prefix = (
-        '<|im_start|>system\nJudge whether the Document meets the requirements '
+        "<|im_start|>system\nJudge whether the Document meets the requirements "
         "based on the Query and the Instruct provided. Note that the answer can "
         'only be "yes" or "no".<|im_end|>\n<|im_start|>user\n'
     )
     default_suffix = "<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
 
     if isinstance(query, str):
-        instruct_str = instruct if instruct is not None else ""
-        query_template = "{prefix}<Instruct>: {instruct_str}\n<Query>: {query}\n"
+        query_template = "{prefix}<Instruct>: {instruct}\n<Query>: {query}\n"
         query = query_template.format(
-            prefix=default_prefix, instruct_str=instruct_str, query=query
+            prefix=default_prefix, instruct=instruct, query=query
         )
 
     if isinstance(documents, list):

@@ -101,11 +101,10 @@ class RerankRequest(OpenAIBaseModel):
     )
 
     instruct: str | None = Field(
-        default=None,
+        default="Given a web search query, retrieve relevant passages that answer the query",
         description=(
-            "Optional instruction string to include in the query template. "
+            "Instruction string to include in the query template. "
             "For Qwen3-Reranker models, this provides context about the reranking task. "
-            "If not provided, the model's default template will be used."
         ),
     )
     # --8<-- [end:rerank-extra-params]
